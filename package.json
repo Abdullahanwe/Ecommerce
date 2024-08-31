@@ -7,9 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "homepage": "https://Abdullah Anwer.github.io/Ecommerce",
-"predeploy": "npm run build",
-   "deploy": "gh-pages -d dist",
+    "homepage": "https://Abdullahanwe.github.io/E-COMAREC",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {
