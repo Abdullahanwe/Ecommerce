@@ -42,7 +42,7 @@ const ForgetPassword = () => {
 
     return (
         <>   
-            <form onSubmit={formikforg.handleSubmit} className='py-48 '>
+            <form onSubmit={formikforg.handleSubmit} className='py-48 p-10'>
                 <div className="relative z-0 w-full mb-5  group">
                     <input 
                         type="email" 

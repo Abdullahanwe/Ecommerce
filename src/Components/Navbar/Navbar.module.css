@@ -1,1 +1,11 @@
-.Navbar {}
+.Navbar {
+   
+}
+
+@media screen and (max-width:480px) {
+    nav.icon i{
+        display: none;
+        font-size: 100px;
+    }
+}
+

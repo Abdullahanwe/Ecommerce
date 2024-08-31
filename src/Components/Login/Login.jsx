@@ -24,7 +24,6 @@ useState()
     setUserData(data.token)
     setLoding(false)
   }catch(err){
-    console.log(err?.response?.data?.message);
     setApiError(err?.response?.data?.message);
     setLoding(false);
   }
@@ -51,8 +50,8 @@ onSubmit:handelLogin
     
   return  <>
 
-  <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto  pt-36 pb-44"> 
-  <h1 className="text-3xl">LogIn Now  </h1>
+  <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto  pt-36 pb-44 px-6"> 
+  <h1 className="text-3xl bg-black text-main mb-5 rounded-md bg-clip-text">LogIn Now  </h1>
   {apiError && <div class="py-2 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-400-800 dark:text-red-400" role="alert">
       {apiError}
       </div>}

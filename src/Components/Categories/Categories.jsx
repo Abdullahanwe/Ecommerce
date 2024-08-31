@@ -12,7 +12,6 @@ const [categorie, setCategorie] = useState([]);
 async function getCategories() {
   try{
     let{data}=await axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
-    console.log(data?.data);
     setCategorie(data?.data);
 
   }catch(err){
@@ -26,9 +25,8 @@ async function getCategories() {
     
   return <>
     
-    <h1 className="text-3xl">Categories</h1>
-    {categorie.length?<div className="flex flex-wrap justify-center mx-7">
-      {categorie.map((categorie)=><div className="w-1/5 p-4 categorie product">
+    {categorie.length?<div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  mx-7">
+      {categorie.map((categorie)=><div className=" p-4 categorie product">
           <div>
               <img src={categorie?.image} className='w-full h-[250px]' alt={categorie?.data?.name} />
               <h2 className='text-main text-sm'>{categorie.data?.name}</h2>

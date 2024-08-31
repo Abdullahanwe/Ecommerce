@@ -17,6 +17,29 @@ export default function CategoriesSlider() {
     autoplaySpeed:1000,
     slidesToShow: 7,
     slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1024, // الشاشات الأكبر من 1024px
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 2,
+        }
+      },
+      {
+        breakpoint: 768, // الشاشات الأكبر من 768px وأصغر من 1024px
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        }
+      },
+      {
+        breakpoint: 480, // الشاشات الأصغر من 768px
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
   };
 
   const [categories, setCategories] = useState([]); 
@@ -24,7 +47,6 @@ export default function CategoriesSlider() {
   async function getResentCategories() {
       try{
       let {data}= await axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
-      console.log(data?.data);
       setCategories(data.data)
     }catch(err){
       console.log(err); 
@@ -36,12 +58,21 @@ export default function CategoriesSlider() {
   },[]);
   return <>
 
-    <Slider {...settings}>
-        {categories?.map((category , index)=> <div key={index} className='my-6'>
-          <img src={category.image}   className='w-full h-[200px] mt-4' alt=''/>
-          <h3>{category.name}</h3>
-        </div>)}
-    </Slider>
+<Slider {...settings}>
+  {categories?.map((category, index) => (
+    <div key={index} className='my-4 px-2 '>
+      <img 
+        src={category.image} 
+        className='w-full h-[250px] sm:h-[200px] md:h-[250px] lg:h-[300px] mt-4 object-cover' 
+        alt={category.name}
+      />
+      <h3 className='text-sm sm:text-md md:text-lg lg:text-xl mt-2 text-center'>
+        {category.name}
+      </h3>
+    </div>
+  ))}
+</Slider>
+
 
   </>
 }

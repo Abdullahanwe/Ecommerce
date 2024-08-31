@@ -22,7 +22,7 @@ useEffect(()=>{
 
   return <>
     <Navbar />
-    <div className="container md:pt-12 ">
+    <div className="container md:pt-12 mb-5 ">
 
       <Outlet></Outlet>
     </div>

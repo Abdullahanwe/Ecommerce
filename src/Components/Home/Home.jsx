@@ -34,7 +34,7 @@ export default function Home() {
     <MianSlide/>
     <CategoriesSlider/>
 
-    {products.length? <div className="flex flex-wrap justify-center mx-7">
+    {products.length? <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 mx-7">
   {products.map((product,index)=> <RecentProducts key={index} product={product}/>)}
   </div>: <div className="flex h-screen justify-center items-center">
         <Loding/> 

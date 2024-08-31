@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import style from './Loding.module.css'
-import { RevolvingDot } from 'react-loader-spinner'
+import { RevolvingDot, ThreeDots } from 'react-loader-spinner'
 
 export default function Loding() {
 
@@ -9,15 +9,16 @@ export default function Loding() {
     
   return <>
     
-    <RevolvingDot
+
+    <ThreeDots
   visible={true}
   height="80"
   width="80"
   color="#4fa94d"
-  ariaLabel="revolving-dot-loading"
+  // radius="9"
+  ariaLabel="three-dots-loading"
   wrapperStyle={{}}
   wrapperClass=""
   />
-  
   </>
 }

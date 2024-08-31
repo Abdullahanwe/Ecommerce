@@ -37,7 +37,6 @@ export default function CartContextProvider({children}){
             }, {
                 headers
             });
-            console.log(data);
             toast.success(data.message,{
             })
             setCart(data)
@@ -71,7 +70,7 @@ export default function CartContextProvider({children}){
                     headers 
                 });
     
-                console.log(data);
+        
                 setCart(data)
                 setLoding(false)
             } catch (error) {
@@ -89,7 +88,7 @@ export default function CartContextProvider({children}){
                     headers 
                 });
     
-                console.log(data);
+                
                 setCart(null)
                 setLoding(false)
             } catch (error) {
@@ -109,7 +108,7 @@ export default function CartContextProvider({children}){
                     headers 
                 });
     
-                console.log(data);
+                
                 setCart(data)
                 setLoding(false)
             } catch (error) {

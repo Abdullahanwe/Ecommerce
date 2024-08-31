@@ -7,7 +7,6 @@ import Loding from '../Loding/Loding';
 const Wishlist = () => {
 
 let{wishlists,getWishList,deleteProduct}=useContext(WishlistContext)
-console.log('heee',wishlists);
 useEffect(()=>{
     getWishList()
     },[])
@@ -17,12 +16,10 @@ useEffect(()=>{
     return (
         
         <div>
-        <h2>Your Wishlist</h2>
-      
         {wishlists.length > 0 ? (
-          <div className="flex flex-wrap justify-center mx-7">
+          <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2   mx-7">
             {wishlists.map((item) => (
-              <div key={item._id} className="w-1/5 p-4 product relative">
+              <div key={item._id} className="p-4 mt-4 product relative">
                 <div>
                   <img src={item.imageCover} className="w-full" alt={item.name} />
                   <h2 className="text-main text-sm">{item.name}</h2>
@@ -36,11 +33,11 @@ useEffect(()=>{
                     <i className="fas fa-star rating-color"></i> {item.ratingsAverage}
                 </h3>
                 </div>
-                <button onClick={()=> deleteProduct(item._id)} className="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</button>
+                <button onClick={()=> deleteProduct(item._id)} className="font-medium text-red-600 dark:text-red-500 hover:underline"><i class="fa-solid fa-trash-can"></i> Remove</button>
             </div>
             ))}
         </div>
-        ) : <div className='flex justify-center h-screen'><Loding/></div>}
+        ) : <div className='flex justify-center h-screen items-center'><Loding/></div>}
       </div>
     )
 }

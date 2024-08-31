@@ -13,7 +13,6 @@ async function getBrand() {
   
   try{
    let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/brands`);
-    console.log(data?.data);
     
     setBrands(data?.data)
   }catch(err){
@@ -27,9 +26,8 @@ useEffect(()=>{
     
   return <>
     
-    <h1 className="text-3xl">Brands</h1>
-    {brands.length?<div className="flex flex-wrap justify-center mx-7">
-      {brands.map((brand)=><div className="w-1/5 p-4 brand product ">
+    {brands.length?<div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2   mx-7">
+      {brands.map((brand)=><div className=" p-4 brand product ">
       {/* <Link to={`/productdetails/${brand.id}/${brand?.data?.name}`}> */}
           <div>
               <img src={brand?.image} className='w-full' alt={brand?.data?.name} />

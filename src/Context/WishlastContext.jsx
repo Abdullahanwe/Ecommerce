@@ -10,7 +10,8 @@ export default function WishlistContextProvider({ children }) {
   };
 
   const [wishlists, setWishlists] = useState([]);
-
+  const [isAdd, setIsAdd] = useState(false)
+  
   async function getWishList() {
     try {
       let { data } = await axios.get(
@@ -39,13 +40,15 @@ export default function WishlistContextProvider({ children }) {
           headers,
         }
       );
-      console.log(data?.data);
-      toast.success(data.message, {});
+     
       setWishlists(data?.data);
+      toast.success(data.message, {});
+      setIsAdd(productId,true)
     } catch (error) {
       console.log(error);
     }
   
+
   }
   async function deleteProduct(productId ) {
         
@@ -55,7 +58,7 @@ export default function WishlistContextProvider({ children }) {
             headers 
         });
 
-        console.log(data.data);
+     
         setWishlists(data.data)
        
     } catch (error) {
@@ -70,7 +73,7 @@ export default function WishlistContextProvider({ children }) {
   }, []);
 
   return (
-    <WishlistContext.Provider value={{ wishlists, getWishList, addWishlist,deleteProduct }}>
+    <WishlistContext.Provider value={{ wishlists, getWishList, addWishlist,deleteProduct , isAdd}}>
       {children}
     </WishlistContext.Provider>
   );

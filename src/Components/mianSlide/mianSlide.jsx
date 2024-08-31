@@ -20,18 +20,17 @@ export default function MianSlide() {
     
   return <>
     
-<div className="flex">
-  <div className="w-3/4">
+    <div className="flex flex-col md:flex-row">
+  <div className="md:w-3/4 w-full">
     <Slider {...settings}>
-      <img src={Slide1} className='w-full h-[400px]' alt="" />
-      <img src={Slide2} className='w-full h-[400px]' alt="" />
-      <img src={Slide3} className='w-full h-[400px]' alt="" />
+      <img src={Slide1} className='w-full h-[200px] md:h-[400px]' alt="" />
+      <img src={Slide2} className='w-full h-[200px] md:h-[400px]' alt="" />
+      <img src={Slide3} className='w-full h-[200px] md:h-[400px]' alt="" />
     </Slider>
-
   </div>
-  <div className="w-1/4">
-  <img src={Slide1} className='w-full h-[200px]' alt="" />
-  <img src={Slide2} className='w-full h-[200px]' alt="" />
+  <div className="md:w-1/4 w-full flex  md:flex-col ">
+    <img src={Slide1} className='w-full h-[100px] md:h-[200px] mb-2 md:mb-0' alt="" />
+    <img src={Slide2} className='w-full h-[100px] md:h-[200px]' alt="" />
   </div>
 </div>
 

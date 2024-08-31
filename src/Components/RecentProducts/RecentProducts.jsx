@@ -14,8 +14,9 @@ const RecentProducts = ({product}) => {
 
     return (
         <>
-            <div className="w-1/5 p-4 product relative">
-                       <button  onClick={()=>addWishlist(product._id)} className='absolute right-3  wish'> <i className='fa-solid fa-heart text-2xl text-main z-40' ></i></button>
+            <div className=" p-4 product relative">
+                       <button  onClick={()=>addWishlist(product._id)} className='absolute right-3  wish'> 
+                        <i className='fa-solid fa-heart text-2xl text-main z-40' ></i></button>
                 <Link to={`productdetails/${product.id}/${product.category.name}`}>
                     <div className=''>
                         <img src={product.imageCover} className='w-full' alt={product.title} />
@@ -27,7 +28,7 @@ const RecentProducts = ({product}) => {
                         <h3><i className='fas fa-star rating-color'></i> {product.ratingsAverage}</h3>
                     </div>
                 </Link>
-                <button onClick={()=>addProudactToCart(product.id)} className='btn w-full bg-main text-white rounded py-1'>Add To Cart</button>
+                <button onClick={()=>addProudactToCart(product.id)} className='btn w-full bg-main text-white rounded py-1'><i class="fa-solid fa-cart-arrow-down text-2xl"></i></button>
             </div>
         </>
     );

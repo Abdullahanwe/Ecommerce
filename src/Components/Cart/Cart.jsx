@@ -15,9 +15,8 @@ useEffect (()=>{
     
   return <>
     
-    <h1 className="text-3xl">Cart</h1>
 
-    {loding? <div className='flex h-screen justify-center '><Loding/></div>  :<div> 
+    {loding? <div className='flex h-screen justify-center items-center'><Loding/></div>  :<div> 
       {cart? <div className="relative overflow-x-auto  w-3/4 mx-auto shadow-md sm:rounded-lg">
   <table className="w-full text-sm text-left mb-2 rtl:text-right text-gray-500 dark:text-gray-400">    
     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
@@ -71,16 +70,16 @@ useEffect (()=>{
           {product.price} EGP
         </td>
         <td className="px-6 py-4">
-          <button onClick={()=> removeProduct(product.product.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</button>
+          <button onClick={()=> removeProduct(product.product.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline"><i class="fa-solid fa-trash-can"></i> Remove</button>
         </td>
       </tr>)}
     </tbody>
-    <tfoot className='w-full'>
-      <tr className='font-semibold text-black text-xl'>
-        <th colSpan={3} >
+    <tfoot className='w-full mb-3'>
+      <tr className='font-semibold text-black text-xl '>
+        <th colSpan={3} className='pl-3'>
           Total Cart Price
         </th>
-        <th className='text-center'>{cart.data.totalCartPrice}</th>
+        <th colSpan={3} className='text-center'>{cart.data.totalCartPrice} EGP</th>
       </tr>
     </tfoot>
   </table>

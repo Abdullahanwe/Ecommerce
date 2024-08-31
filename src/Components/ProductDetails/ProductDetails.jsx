@@ -27,7 +27,6 @@ let{addWishlist}=useContext(WishlistContext)
 const [productDetails, setProductDetails] = useState({})
   async function getProductDetails(id){
     let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
-    // console.log(data);
     setProductDetails(data.data)
     
   }
@@ -42,9 +41,7 @@ const [isLoding, setIsLoding] = useState(false)
       let{data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
       console.log(data?.data);
      let allProudacts =data?.data;
-     let related = allProudacts.filter((product)=> product.category.name == category);
-     console.log(related);
-     
+     let related = allProudacts.filter((product)=> product.category.name == category);     
         setSliderDedails(related)
      setIsLoding(false)
       
@@ -58,28 +55,35 @@ const [isLoding, setIsLoding] = useState(false)
   },[id , category]);
   return <>
         {!isLoding? <>
-    <div className="flex items-center py-10">
-        <div className="w-1/4 p-4">
+          <div className="flex flex-col md:flex-row items-start md:items-center py-10">
+      <div className="w-full md:w-1/3 p-4">
         <Slider {...settings}>
-          {productDetails.images?.map((imgae , index)=> <img src={imgae} key={index} className='w-full' alt=''/>)}
-          </Slider>
+          {productDetails.images?.map((image, index) => (
+            <img src={image} key={index} className='w-full h-auto' alt='' />
+          ))}
+        </Slider>
+      </div>
+      <div className="w-full md:w-2/3 p-4">
+        <h2 className="text-2xl font-semibold">{productDetails.title}</h2>
+        <p className='my-4 text-gray-500'>{productDetails.description}</p>
+        <h3 className="text-lg font-medium">{productDetails.category?.name}</h3>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center my-4">
+          <h3 className="text-xl font-bold">{productDetails.price} EGP</h3>
+          <h3 className="flex items-center">
+            <i className='fas fa-star rating-color'></i> {productDetails.ratingsAverage}
+          </h3>
         </div>
-        <div className="w-3/4">
-          <div>
-            <h2>{productDetails.title}</h2>
-            <p className='my-6 text-gray-500'>{productDetails.description}</p>
-            <h3>{productDetails.category?.name}</h3>
-            <div className="flex justify-between my-2 mx-5 " >
-                <h3>{productDetails.price} EGP</h3>
-                <h3><i className='fas fa-star rating-color'></i> {productDetails.ratingsAverage}</h3>
-            </div>
-            <button onClick={()=>addProudactToCart(productDetails.id)} className='btn w-full bg-main text-white rounded py-1'>Add To Cart</button>
-          </div>
-        </div>
+        <button 
+          onClick={() => addProudactToCart(productDetails.id)} 
+          className='btn bg-main text-white rounded py-2 px-4 w-full md:w-full'
+        >
+          Add To Cart
+        </button>
+      </div>
     </div>
-    <div className="flex flex-wrap mx-5 " >
+    <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  mx-5 " >
       {sliderDedails.map((product)=> 
-        <div className=" w-1/5 p-4 product relative mx-">
+        <div className="  p-4 product relative mx-">
               <button onClick={()=>addWishlist(product.id)} className='absolute right-3 wish text-2xl'><i className='fa-solid fa-heart  text-main'></i></button>
           <Link to={`/productdetails/${product.id}/${product.category.name}`}>
             <div className=''>

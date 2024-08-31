@@ -17,15 +17,11 @@ export default function Register() {
     try{
       setLoding(true);
       let {data}= await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,values);   
-    
-      console.log(data);
       localStorage.setItem('userToken' , data.token );  
       navigate("/");
       setUserData(data.token)
       setLoding(false);
     }catch(err){
-      // console.log(data);
-      console.log(err?.response?.data?.message);
     setApiError(err?.response?.data?.message); 
     setLoding(false);
     }
@@ -56,7 +52,7 @@ export default function Register() {
 
   return <>
 
-    <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto pt-16 pb-16"> 
+    <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto pt-16 pb-16 p-4"> 
     <h1 className="text-3xl">Register</h1>
     {apiError && <div class="py-2 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-400-800 dark:text-red-400" role="alert">
         {apiError}

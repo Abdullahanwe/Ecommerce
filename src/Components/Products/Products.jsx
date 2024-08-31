@@ -15,7 +15,6 @@ const [product, setProduct] = useState([])
   
   try{
     let {data}=await axios.get(`https://ecommerce.routemisr.com/api/v1/products`)
-    console.log(data.data);
     
     setProduct(data?.data);
   }catch(err){
@@ -31,8 +30,8 @@ let {addProudactToCart} = useContext(CartContext)
 let {addWishlist}=useContext(WishlistContext)
   
   return <>
-     {product.length?<div className="flex flex-wrap justify-center mx-7">
-      {product.map((product)=>  <div className="w-1/5 p-4 product relative ">
+     {product.length?<div className=" grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  mx-7">
+      {product.map((product)=>  <div className=" p-4 product relative ">
         <button onClick={()=>addWishlist(product.id)} className='absolute right-5  wish text-2xl z-10'><i className='fa-solid fa-heart text-main '></i></button>
 
       <Link to={`/productdetails/${product.id}/${product?.category?.name}`}>
